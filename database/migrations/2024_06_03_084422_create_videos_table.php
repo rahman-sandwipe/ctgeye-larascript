@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('caption')->nullable();
             $table->mediumText('intro');
             $table->string('embed_code');
-            $table->enum('s_category',['lead','top','specials'])->nullable();
+            $table->enum('s_category',['lead','specials'])->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->unsignedBigInteger('cat_id');
             $table->unsignedBigInteger('subcat_id')->nullable();
@@ -27,6 +27,8 @@ return new class extends Migration
             $table->mediumText('meta_tags')->nullable();
             $table->mediumText('meta_desc')->nullable();
             $table->string('news_link')->nullable();
+            $table->timestamps();
+            // php artisan migrate:refresh --path=/2024_06_03_084422_create_videos_table.php
         });
     }
 

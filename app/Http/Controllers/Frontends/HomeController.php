@@ -9,6 +9,6 @@ use App\Http\Controllers\Controller;
 class HomeController extends Controller
 {
     public function home() : View {
-        return view('frontends.pages.home');
+        return view('frontends.master');
     }
 }
