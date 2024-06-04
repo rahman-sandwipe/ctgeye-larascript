@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Backends\NewsController;
@@ -35,6 +36,8 @@ Route::middleware('guest')->group(function () {
                 ->name('password.store');
 });
 
+Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 
     // User mangments
@@ -46,6 +49,11 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
     Route::get('/user-list',[AdminController::class, 'usersList'])->name('usersList');
     Route::get('register',  [RegisteredUserController::class, 'create'])->name('register');
     Route::post('register', [RegisteredUserController::class, 'store']);
+    
+    // === User mangments ends
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile', [ProfileController::class, 'nameUpdate'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // User mangments ends
     
     /* --------------------------------------------------------------------------*/
