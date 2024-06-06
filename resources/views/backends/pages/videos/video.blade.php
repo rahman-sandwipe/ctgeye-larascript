@@ -47,35 +47,39 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <ul class="row list-unstyled c_review">
-                                                <div class="col-3">
+                                            <ul class="row">
+                                                <div class="col-2">
                                                     <div class="avatar">
                                                         <a href="javascript:void(0);">
-                                                            <img src="{{ asset($item->thumbnail) }}" alt="{{ $item->caption }}" width="150" class="rounded">
+                                                            <img src="{{ asset($item->thumbnail) }}" alt="{{ $item->caption }}" width="120" class="rounded">
                                                         </a>
                                                     </div>                                
                                                 </div>
-                                                <div class="col-9">
+                                                <div class="col-10">
                                                     <div class="">
                                                         <h6 class="c_name">{{ $item->headline }}</h6>
-                                                        <p class="c_msg m-b-0">Cat: {{ $item->category->name }}</p>
-                                                        <p class="c_msg m-b-0">Sub: {{ $item->subcategory->name }}</p>
                                                         <p class="c_msg m-b-0">Auth: {{ $item->user->name }}</p>
+                                                        <div>
+                                                            @if ($item->status=='active')
+                                                            <div class="badge badge-success"><i class="fa fa-refresh"></i> Active</div>
+                                                            @else
+                                                            <div class="badge badge-danger"><i class="fa fa-info-circle"></i> Inactive</div>
+                                                            @endif
+                                                            <small class="comment-date float-sm-right">
+                                                                Created Time: {{ $item->created_at->format('d M Y, H:i:s')}}
+                                                            </small>
+                                                            
+                                                            @if ($item->video_type=='facebook')
+                                                            <div class="badge badge-success"><i class="fa fa-refresh"></i>FaceBook</div>
+                                                            @else
+                                                            <div class="badge badge-danger"><i class="fa fa-info-circle"></i>Youtube</div>
+                                                            @endif
+                                                            <small class="comment-date float-sm-right">
+                                                                Updated Time: {{ $item->updated_at->format('d M Y, H:i:s')}}
+                                                            </small>
+                                                        </div>        
                                                     </div>                                
                                                 </div>
-                                                <li class="col-12">
-                                                    <div class="">
-                                                        @if ($item->status=='active')
-                                                        <div class="badge badge-success"><i class="fa fa-refresh"></i> Active</div>
-                                                        @else
-                                                        <div class="badge badge-danger"><i class="fa fa-info-circle"></i> Inactive</div>
-                                                        @endif
-                                                        <small class="comment-date float-sm-right">
-                                                            Created Time: {{ $item->created_at->format('d M Y, H:i:s')}} |
-                                                            Updated Time: {{ $item->updated_at->format('d M Y, H:i:s')}}
-                                                        </small>
-                                                    </div>                                
-                                                </li>
                                             </u>
                                         </td>
                                         <td class="actions" style="width: 15%">

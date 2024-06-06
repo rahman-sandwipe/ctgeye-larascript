@@ -37,10 +37,18 @@
                             </div>
                             {{-- News Contents --}}
                             <div class="form-group row">
-                                <div class="col-md-12">
+                                <div class="col-md-8">
                                     <label for="content">Embed Code<sup class="text-danger">*</sup></label>
                                     <input type="text" name="embed_code" id="nameInput" class="form-control @error('embed_code') is-invalid @enderror" required>
                                     @error('embed_code') <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span>@enderror
+                                </div>
+                            
+                                <div class="col-md-4">
+                                    <label for="videoType">Video Type</label>
+                                    <select class="form-control" id="videoType" name="video_type">
+                                        <option value="facebook">Facebook</option>
+                                        <option value="youtube">Youtube</option>
+                                    </select>
                                 </div>
                             </div>
                             
@@ -52,42 +60,6 @@
                                     <textarea class="form-control" name="intro" rows="2"></textarea>
                                 </div>
                             </div>
-                            
-
-                            {{-- Category, Sub category & Special Category --}}
-                            <div class="form-group row">
-                                <div class="col-md-4">
-                                    <label for="metaInput">Category<sup class="text-danger">*</sup></label>
-                                    <select class="form-control @error('cat_id') is-invalid @enderror" name="cat_id">
-                                        <option value="">Chooce One</option>
-                                        @foreach ($category as $item)
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('cat_id') <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span>@enderror
-                                </div>
-
-                                <div class="col-md-4">
-                                    <label for="metaInput">{{ __('Sub Category') }}</label>
-                                    <select class="form-control @error('subcat_id') is-invalid @enderror" name="subcat_id">
-                                        <option value="">Chooce One</option>
-                                        @foreach ($subcategory as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('subcat_id') <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong></span>@enderror
-                                </div>
-
-                                <div class="col-md-4">
-                                    <label for="s_categoryInput">{{ __('Special News') }}</label>
-                                    <select class="form-control" name="s_category">
-                                        <option value="">Chooce One</option>
-                                        <option value="lead">Lead News</option>
-                                        <option value="specials">Specials News</option>
-                                    </select>
-                                </div>
-                            </div>
-
                             
                             {{-- News Auth, Report & Status --}}
                             <div class="form-group row">

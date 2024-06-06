@@ -12,7 +12,7 @@ class Video extends Model
 {
     use HasFactory;
     public $timestamps = true;
-    protected $fillable = ['headline', 'report', 'thumbnail', 'caption', 'intro', 'embed_code', 's_category', 'status', 'cat_id', 'subcat_id', 'user_id', 'meta_tags', 'meta_desc','news_link'];
+    protected $fillable = ['headline','report','thumbnail','caption','intro','video_type','embed_code','status','user_id','meta_tags','meta_desc','news_link'];
     public function category() {
         return $this->belongsTo(Category::class, 'cat_id');
     }

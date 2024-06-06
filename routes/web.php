@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Auth\AdminController;
+
 use App\Http\Controllers\Frontends\HomeController;
 
 Route::get('/',                                         [HomeController::class, 'home'])

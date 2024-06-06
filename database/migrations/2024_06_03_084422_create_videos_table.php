@@ -19,10 +19,8 @@ return new class extends Migration
             $table->string('caption')->nullable();
             $table->mediumText('intro');
             $table->string('embed_code');
-            $table->enum('s_category',['lead','specials'])->nullable();
+            $table->enum('video_type',['facebook','youtube'])->default('facebook');
             $table->enum('status',['active','inactive'])->default('active');
-            $table->unsignedBigInteger('cat_id');
-            $table->unsignedBigInteger('subcat_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->mediumText('meta_tags')->nullable();
             $table->mediumText('meta_desc')->nullable();
